@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>New User</title>
+</head>
+<body>
+    <div class="new_user-form">
+        <form th:method="POST" th:action="@{/users}" th:object="${user}">
+            <table>
+                <tr>
+                    <td>
+                        <label for="name">Enter Name</label>
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{name}" id="name"/>
+                        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error name</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Enter Password</label>
+                    </td>
+                    <td>
+                        <input type="password" th:field="*{password}" id="password"/>
+                        <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error name</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="role">Choose Role</label>
+                    </td>
+                    <td>
+                        <select  th:field="*{role}" id="role">
+                            <option selected value="user">user</option>
+                            <option value="admin">admin</option>
+                        </select>
+                        <div style="color: red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}">Error name</div>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Create"/>
+        </form>
+    </div>
+</body>
+</html>
